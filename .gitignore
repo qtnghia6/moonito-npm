@@ -1,0 +1,21 @@
+# Ignore .idea
+.idea
+
+# Ignore .npmignore
+.npmignore
+
+# Ignore node modules
+node_modules/
+
+# Ignore compiled TypeScript files
+dist/
+
+# Ignore log files and temp files
+*.log
+*.tmp
+*.env
+
+# Ignore TypeScript config and lock files
+tsconfig.tsbuildinfo
+package-lock.json
+yarn.lock
